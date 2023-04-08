@@ -5,6 +5,7 @@ import FacturaRotes from './Routes/Factura.routes.js'
 import FacturaProducto from './Routes/producto_factura.routes.js'
 import {Port} from '../config.js'
 const app = express();
+console.log("hola")
 app.use(express.json())
 app.use(ClientesRoutes)
 app.use(ProductosRoute)
