@@ -34,9 +34,9 @@ export const update = async (req, res) => {
       "update Cliente SET NOMBRE = IFNULL(?,NOMBRE) WHERE IDClientes = ?",
       [NOMBRE, ID]
     );
-    return res.json(result[0]);
+     res.json(result[0]);
   } catch (error) {
-    return res.json({
+     res.json({
       Message: "ERROR",
     });
   }
@@ -59,15 +59,16 @@ export const Delete = async (req, res) => {
 };
 
 export const getId = async (req, res) => {
+  console.log("hola")
+  try {
   const id = req.params.id;
-  const [result] = await pool.query(
-    "SELECT * from Cliente WHERE IDClientes = ?",
-    [id]
-  );
-  if (result.length > 0) {
-    return res.json(result);
+
+    const [result] = await pool.query(
+      "SELECT * from Cliente WHERE IDClientes = ?",
+      [id]
+    );
+       res.json(result);
+  } catch (error) {
+    
   }
-  return res.status(404).json({
-    message: "Cliente not fund",
-  });
 };
